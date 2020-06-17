@@ -1,0 +1,88 @@
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="side" fixedInViewport=false>
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <!-- <button
+      mat-mini-fab
+      color="primary"
+      class="m-2"
+      matTooltip="Close"
+      class="float-right mt-1 btn-close"
+      (click)="drawer.toggle(); openedIn()"
+      *ngIf="opened"
+    >
+      <mat-icon>close</mat-icon>
+    </button> -->
+    <mat-selection-list [multiple]="false">
+      <mat-list-option
+        (click)="drawer.toggle(); openedIn()"
+        [routerLink]="['/']"
+      >
+        <mat-list-item role="listitem" [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+          <div mat-line>Home</div>
+        </mat-list-item>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <mat-list-option
+        [routerLink]="['/customers']"
+        (click)="drawer.toggle(); openedIn()"
+      >
+        <mat-list-item role="listitem">
+          <mat-icon>people</mat-icon>
+          <div mat-line>Customers</div>
+        </mat-list-item>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <mat-list-option>
+        <mat-list-item role="listitem" [routerLink]="['/']">
+          <mat-icon>account_circle</mat-icon>
+          <div mat-line>Other</div>
+        </mat-list-item>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <mat-list-option>
+        <mat-list-item role="listitem" [routerLink]="['/']">
+          <mat-icon>settings</mat-icon>
+          <div mat-line>Other</div>
+        </mat-list-item>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+      <mat-list-option>
+        <mat-list-item role="listitem" [routerLink]="['/']">
+          <mat-icon>home</mat-icon>
+          <div mat-line>Home</div>
+        </mat-list-item>
+      </mat-list-option>
+      <mat-divider></mat-divider>
+    </mat-selection-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary" >
+      <mat-toolbar-row>
+        <button
+          mat-mini-fab
+          aria-label="Example icon-button with a heart icon"
+          color="primary"
+          class="m-2 fixed-top"
+          matTooltip="Menú"
+          (click)="drawer.toggle(); openedIn()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span><mat-icon>extension</mat-icon> </span>
+        <span>{{ title }} </span>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+
+    <div class="container mt-3">
+      <!-- <p  >{{opened}}</p> -->
+
+      <!-- <app-list-custumers></app-list-custumers> -->
+      <router-outlet></router-outlet>
+    </div>
+    <ng-content></ng-content>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+<app-footer></app-footer>
